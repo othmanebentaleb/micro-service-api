@@ -1,13 +1,16 @@
 pipeline {
   
   agent any
-  
+
+  tools {
+    maven "Maven_3.6.3_1"
+  }
   stages{
       
     stage("Build"){
       steps {
         echo "Building the application ..."
-        sh "mvn --version"
+        sh "mvn -version"
         sh "mvn clean install"
       }
     }
@@ -22,6 +25,12 @@ pipeline {
       steps {
         echo "Deploying the application"
       }       
+    }
+  }
+
+  post {
+    always {
+        cleanWs()
     }
   }
 
