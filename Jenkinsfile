@@ -4,20 +4,21 @@ pipeline {
   
   stages{
       
-    stage("build"){
+    stage("Build"){
       steps {
-        echo "Building the application"
-        echo "Test Trigger Intervall "
+        echo "Building the application ..."
+        sh "mvn --version"
+        sh "mvn clean install"
       }
     }
     
-    stage("test"){
+    stage("Test"){
       steps {
         echo "Testing the application"
       }
     }
     
-    stage("deploy"){
+    stage("Deploy"){
       steps {
         echo "Deploying the application"
       }       
